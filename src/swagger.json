@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Bonus Data API",
+    "description": "Bonus Data API",
+    "version": "0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3008"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "description": "Auto generated using Swagger Inspector",
+        "responses": {
+          "200": {
+            "description": "Auto generated using Swagger Inspector",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3008"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3008"
+        }
+      ]
+    },
+    "/bonus": {
+      "get": {
+        "description": "Auto generated using Swagger Inspector",
+        "parameters": [
+          {
+            "name": "addresses",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "5CaL5SiLvynA4uC5TsWykZE6R1VLnUYgjyQivZkur6kVBeN9,1EejGMnn6AU4GgfqXwu5WYpAnchdetGd9KhLNxVqbN3RBZp"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Auto generated using Swagger Inspector",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3008"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3008"
+        }
+      ]
+    },
+    "/docs": {
+      "get": {
+        "description": "Auto generated using Swagger Inspector",
+        "responses": {
+          "200": {
+            "description": "Auto generated using Swagger Inspector",
+            "content": {
+              "text/html; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:3008"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3008"
+        }
+      ]
+    }
+  }
+}
