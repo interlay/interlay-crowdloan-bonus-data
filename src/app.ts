@@ -4,7 +4,7 @@ import pino from "express-pino-logger";
 import bodyParser from "body-parser";
 
 import logger from "./util/logger";
-import { getData } from "./dataStore";
+import { getQuizData, getTestnetData } from "./dataStore";
 
 export const app = express();
 
@@ -34,18 +34,13 @@ app.use("/docs", swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
   );
 });
 
-app.use("/quiz", async (req: ExRequest, res: ExResponse) => {
-    if (!req.query || ! req.query.addresses) {
-      return res.status(500).json("`addresses` parameter must be specified").send();
-    }
-    const addresses = (req.query.addresses as string).split(",");
-    const data = getData();
-    data.forEach(
-        item => {
-            if (addresses.includes(item.answers[0].text)) {
-                return res.json({ quizBonus: true });
-            }
-        }
-    );
-    return res.json({ quizBonus: false });
+app.use("/bonus", async (req: ExRequest, res: ExResponse) => {
+  if (!req.query || ! req.query.addresses) {
+    return res.status(500).json("`addresses` parameter must be specified").send();
+  }
+  const addresses = (req.query.addresses as string).split(",");
+  return res.json({
+    quizBonus: !!getQuizData().data.find(item => addresses.includes(item.answers[0].text)),
+    testnetBonus: !!getTestnetData().data.find(item => addresses.includes(item.userParachainAddress))
+  });
 });

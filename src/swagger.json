@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "defaultTitle",
-    "description": "defaultDescription",
+    "title": "Bonus Data API",
+    "description": "Bonus Data API",
     "version": "0.1"
   },
   "servers": [
@@ -39,7 +39,7 @@
         }
       ]
     },
-    "/quiz": {
+    "/bonus": {
       "get": {
         "description": "Auto generated using Swagger Inspector",
         "parameters": [

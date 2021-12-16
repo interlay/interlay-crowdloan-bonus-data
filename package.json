@@ -1,10 +1,10 @@
 {
-  "name": "@interlay/interlay-crowdloan-quiz-data",
+  "name": "@interlay/interlay-crowdloan-bonus-data",
   "version": "1.0.0",
-  "description": "Stateless service for querying TypeForm quiz response data",
+  "description": "Stateless service for querying TypeForm quiz response data and testnet executed issues ",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "repository": "https://github.com/interlay/interlay-crowdloan-quiz-data",
+  "repository": "https://github.com/interlay/interlay-crowdloan-bonus-data",
   "engines": {
     "node": ">=11"
   },
