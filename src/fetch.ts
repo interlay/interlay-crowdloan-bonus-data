@@ -49,7 +49,7 @@ export const getExecutedIssues = async (): Promise<any[]> => {
   logger.info("Fetching new completed issue requests...");
   const axiosInstance = axios.create({
     baseURL: 'https://api.interlay.io',
-    timeout: 30000,
+    timeout: 60000,
   });
 
   const res = await axiosInstance

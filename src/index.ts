@@ -6,9 +6,9 @@ import logger from "./util/logger";
 function main() {
     logger.info("Service started");
     // Query every 2 minutes, since each query pulls all issue data
-    setupListener(quizFetcher, 2 * 60 * 1000);
+    setupListener(quizFetcher, 180 * 1000);
     // Query every 60 seconds
-    setupListener(testnetFetcher, 60 * 1000);
+    setupListener(testnetFetcher, 300 * 1000);
 }
 
 app.listen(PORT, () =>
