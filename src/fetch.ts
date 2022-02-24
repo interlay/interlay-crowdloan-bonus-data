@@ -83,10 +83,12 @@ export const testnetFetcher = () => {
 export const setupListener = (fn: () => void, milliseconds: number) => {
   // Call manually once, to fetch data on service startup
   fn();
-  setInterval(
-      async () => fn(),
-      milliseconds
-  );
+  if (process.env.UPDATE_FROM_TESTNET === '1') {
+    setInterval(
+        async () => fn(),
+        milliseconds
+    );
+  }
 }
 
 // Unused
