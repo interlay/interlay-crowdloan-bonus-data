@@ -48,7 +48,7 @@ export const updateQuizResponses = async (quizResponses: QuizData = { data: [] }
 export const getExecutedIssues = async (): Promise<any[]> => {
   logger.info("Fetching new completed issue requests...");
   const axiosInstance = axios.create({
-    baseURL: 'https://api.interlay.io',
+    baseURL: 'https://api-kusama.interlay.io',
     timeout: 60000,
   });
 
@@ -95,8 +95,8 @@ export const setupListener = (fn: () => void, milliseconds: number) => {
 export const getTotalIssueRequests = async (): Promise<number> => {
   logger.info("Checking if there are new issue requests...");
   const axiosInstance = axios.create({
-    baseURL: 'https://api.interlay.io',
-    timeout: 30000,
+    baseURL: 'https://api-kusama.interlay.io',
+    timeout: 60000,
   });
 
   const res = await axiosInstance
