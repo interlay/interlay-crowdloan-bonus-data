@@ -4,7 +4,7 @@ import pino from "express-pino-logger";
 import bodyParser from "body-parser";
 
 import logger from "./util/logger";
-import { getQuizData, getTestnetData } from "./dataStore";
+import { addressCompletedQuiz, getTestnetData } from "./dataStore";
 
 export const app = express();
 
@@ -40,7 +40,8 @@ app.use("/bonus", async (req: ExRequest, res: ExResponse) => {
   }
   const addresses = (req.query.addresses as string).split(",");
   return res.json({
-    quizBonus: !!getQuizData().data.find(item => addresses.includes(item.answers[0].text)),
+    // did any address complete the quiz?
+    quizBonus: addresses.map(addressCompletedQuiz).reduce((sum, next) => sum || next, false),
     testnetBonus: !!getTestnetData().data.find(item => addresses.includes(item.userParachainAddress))
   });
 });
