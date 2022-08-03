@@ -1,3 +1,6 @@
+const csv = require('csv-parser')
+const fs = require('fs')
+
 import axios from "axios";
 import { getQuizData, QuizData, setQuizData, setTestnetData } from "./dataStore";
 import logger from "./util/logger";
@@ -61,6 +64,14 @@ export const getExecutedIssues = async (): Promise<any[]> => {
   logger.info(`Total executed issues: ${res.data.length}`);
   return res.data;
 };
+
+export const readQuizCsv = () => {
+  const results: any[] = [];
+  fs.createReadStream('./data/crowdloan_quiz_responses.csv')
+    .pipe(csv())
+    .on('data', (data: any) => results.push(data));
+  setQuizData({ data: results });
+}
 
 export const quizFetcher = () => {
   updateQuizResponses(getQuizData()).then(

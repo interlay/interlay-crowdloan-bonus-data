@@ -1,12 +1,12 @@
 import { app } from "./app";
 import { ENDPOINT_URL, PORT } from "./constants";
-import { quizFetcher, setupListener, testnetFetcher } from "./fetch";
+import { readQuizCsv, setupListener, testnetFetcher } from "./fetch";
 import logger from "./util/logger";
 
 function main() {
     logger.info("Service started");
-    // Query every 2 minutes, since each query pulls all issue data
-    setupListener(quizFetcher, 180 * 1000);
+    readQuizCsv();
+
     // Query every 60 seconds
     setupListener(testnetFetcher, 300 * 1000);
 }
@@ -16,10 +16,6 @@ app.listen(PORT, () =>
 );
 
 try {
-    if (!process.env.TYPEFORM_TOKEN) {
-        logger.error("TYPEFORM_TOKEN not set in environment");
-        process.exit(-1);
-    }
     main();
 } catch (error) {
     logger.error(error);
